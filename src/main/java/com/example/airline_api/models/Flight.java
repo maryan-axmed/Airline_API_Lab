@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,6 +37,7 @@ public class Flight {
         this.capacity = capacity;
         this.departureDate = departureDate;
         this.departureTime = departureTime;
+        this.passengerList = new ArrayList<>();
     }
 
 //    DEFAULT CONSTRUCTOR
