@@ -28,13 +28,27 @@ public class FlightController {
 //    Display all available flights
 //    Get request to read all the available flights
     @GetMapping
-    public ResponseEntity<List<Flight>> displayAllFlights(){
-
+    public ResponseEntity<List<Flight>> getAllFlights(Flight flight){
+        return new ResponseEntity<>(flightService.findAllFlights(), HttpStatus.OK);
     }
 
 //    Display details of a specific flight
+//    this will be a get request
+    @GetMapping(value ="{/id}")
+    public ResponseEntity<Flight> findFlightById(@PathVariable Long id){
+        Flight flight = flightService.findFlightById(id);
+        return new ResponseEntity<>(flight, HttpStatus.OK);
+    }
 
 //    Cancel a flight
+//    this will be a delete request
+//    what parameter will be taken in to delete the flight?
+
+    @DeleteMapping(value ="{/id}")
+    public ResponseEntity<Long> deleteFlight(Long id){
+        flightService.deleteFlightFromFlightList(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
 
 
 }

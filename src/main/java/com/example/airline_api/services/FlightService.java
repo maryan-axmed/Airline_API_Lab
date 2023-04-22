@@ -6,6 +6,8 @@ import com.example.airline_api.repositories.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FlightService {
 
@@ -22,4 +24,22 @@ public class FlightService {
         Flight flight1 = new Flight(flight.getDestination(), flight.getCapacity(), flight.getDepartureTime(), flight.getDepartureTime());
         passenger.addFlights(flight1);
     }
+
+//this method needs to display all the available flights
+
+    public List<Flight> findAllFlights() {
+        return flightRepository.findAll();
+    }
+
+// create method to find a specific flight by id.
+    public Flight findFlightById(Long id) {
+        return flightRepository.findById(id).get();
+    }
+
+// create a method to delete a flight from the current list of flights.
+    public void deleteFlightFromFlightList(Long id) {
+        flightRepository.deleteById(id);
+    }
+
+
 }
